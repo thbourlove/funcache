@@ -1,0 +1,14 @@
+{
+    "name": "Funcache/Funcache",
+    "require-dev": {
+        "thbourlove/xhgui-extension": "v0.1.1",
+        "predis/predis": "0.8.*@dev",
+        "raveren/kint": "dev-1.0.0-wip",
+        "phpunit/phpunit": "~3.7"
+    },
+    "autoload": {
+        "psr-0": {
+            "Funcache": "./"
+        }
+    }
+}
