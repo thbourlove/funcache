@@ -10,7 +10,8 @@ class FuncacheTest extends \PHPUnit_Framework_TestCase
      * */
     public function testFuncache($callable, $args, $result)
     {
-        $func = (new Funcache())->cacheOnArguments($callable, 'call');
+        $cacher = new Funcache();
+        $func = $cacher->cacheOnArguments($callable, 'call');
         $this->assertEquals(call_user_func_array($func, $args), $result);
     }
 

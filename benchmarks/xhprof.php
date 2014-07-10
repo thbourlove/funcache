@@ -7,7 +7,8 @@ $miss = function () {
     return ;
 };
 
-$miss = (new Funcache())->cacheOnArguments($miss, 'miss');
+$cacher = new Funcache();
+$miss = $cacher->cacheOnArguments($miss, 'miss');
 $mongo = new MongoClient();
 $xhprof = new \Thb\Xhgui\Extension($mongo->xhprof);
 $xhprof->start();

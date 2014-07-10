@@ -3,15 +3,20 @@ require __DIR__."/../vendor/autoload.php";
 
 use Funcache\Funcache;
 
+$timer = function ($func) {
+    $start = microtime(true);
+    echo $func(32)."\n";
+    echo microtime(true) - $start."\n";
+};
+
 $fib = function ($n) use (&$fib) {
     return ($n <= 3) ? $n : $fib($n - 1) + $fib($n - 2);
 };
-$start = microtime(true);
-echo $fib(32)."\n";
-echo microtime(true) - $start."\n";
+$timer($fib);
+
 
 $array = new ArrayIterator();
-$fib = (new Funcache($array))->cacheOnArguments($fib, 'fib');
-$start = microtime(true);
-echo $fib(32)."\n";
-echo microtime(true) - $start."\n";
+$cacher = new Funcache($array);
+$fib = $cacher->cacheOnArguments($fib, 'fib');
+
+$timer($fib);
